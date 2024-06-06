@@ -1,0 +1,20 @@
+@model User
+
+<h2>Update User</h2>
+<hr>
+<form asp-controller="User" asp-action="Create" method="post">
+    <input type="hidden" asp-for="UserId">
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label">Ad</label>
+        <input asp-for="FirstName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label">Soyad</label>
+        <input asp-for="LastName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control">
+    </div>
+    <button class="btn btn-success" type="submit">Kaydet</button>
+</form>
