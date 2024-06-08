@@ -4,29 +4,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace efCoreApp.Controllers
 {
-    //Tekrar commit denemesi
-    public class UserController : Controller
+    public class LawyerController: Controller
     {
         private readonly CaseFileContext _context;
-        public UserController(CaseFileContext context)
+        public LawyerController(CaseFileContext context)
         {
             _context = context;
         }
 
-        public async Task<ActionResult> Index()
-        {
-            return View(await _context.Users.ToListAsync());
-        }
-
-        public IActionResult Create()
-        {
+        public IActionResult Create(){
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(User user)
+         public async Task<ActionResult> Index()
         {
-            _context.Users.Add(user);
+            var lawyer = await _context.Lawyers.ToListAsync();
+            return View(lawyer);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Lawyer lawyer)
+        {
+            _context.Lawyers.Add(lawyer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -39,22 +38,22 @@ namespace efCoreApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(user => user.UserId == id);
-            if (user == null)
+            var lawyer = await _context.Lawyers.FirstOrDefaultAsync(lawyer => lawyer.LawyerId == id);
+            if (lawyer == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(lawyer);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, User model)
+        public async Task<IActionResult> Edit(int id, Lawyer model)
 
 
         {
-            if (id != model.UserId)
+            if (id != model.LawyerId)
             {
                 return NotFound();
             }
@@ -67,7 +66,7 @@ namespace efCoreApp.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Users.Any(user => user.UserId == model.UserId))
+                    if (!_context.Users.Any(user => user.UserId == model.LawyerId))
                     {
                         return NotFound();
                     }
@@ -89,22 +88,22 @@ namespace efCoreApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
-            if (user == null)
+            var lawyer = await _context.Lawyers.FindAsync(id);
+            if (lawyer == null)
             {
                 return NotFound();
             }
 
-            return View(user); 
+            return View(lawyer); 
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteUser([FromForm] int? id){
-            var user = await _context.Users.FindAsync(id);
-            if (user == null){
+        public async Task<IActionResult> DeleteLawyer([FromForm] int? value){
+            var lawyer = await _context.Lawyers.FindAsync(value);
+            if (lawyer == null){
                 return NotFound();
             }
-            _context.Users.Remove(user);
+            _context.Lawyers.Remove(lawyer);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

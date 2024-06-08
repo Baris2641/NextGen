@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using efCoreApp.Data;
 
@@ -10,9 +11,11 @@ using efCoreApp.Data;
 namespace efCoreApp.Migrations
 {
     [DbContext(typeof(CaseFileContext))]
-    partial class CaseFileContextModelSnapshot : ModelSnapshot
+    [Migration("20240608213042_AddLawyerTable")]
+    partial class AddLawyerTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");

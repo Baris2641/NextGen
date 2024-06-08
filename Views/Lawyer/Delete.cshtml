@@ -1,10 +1,10 @@
-@model User
+@model Lawyer
 
 <p>
-   <b>@Model.FirstName @Model.LastName</b> İsimli Kullanıcıyı Silmek İstiyor Musunuz?
+   <b>@Model.LawyerName @Model.LawyerStatus</b> İsimli Kullanıcıyı Silmek İstiyor Musunuz?
 
    <form asp-action="Delete" method="post">
-       <input type="hidden" asp-for="UserId" name="Id" />
+       <input type="hidden" value="@Model.LawyerId" name="id">
        <button type="submit" class="btn btn-danger">Evet</button>
        <a asp-action="Index" class="btn btn-primary">Hayır</a>
    </form>

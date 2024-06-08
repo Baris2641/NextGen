@@ -10,6 +10,7 @@ namespace efCoreApp.Data
         }
         public DbSet<CaseFile> CaseFiles => Set<CaseFile>();
         public DbSet<User> Users  => Set<User>();
+        public DbSet<Lawyer> Lawyers  => Set<Lawyer>();
         public DbSet<CaseFileStatus> CaseFileStatuses => Set<CaseFileStatus>();
     }
 }

@@ -1,0 +1,15 @@
+@model Lawyer
+
+<h2>Add Lawyer</h2>
+<hr>
+<form asp-controller="Lawyer" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="LawyerName" class="form-label">Avukat İsmi</label>
+        <input asp-for="LawyerName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="LawyerStatus" class="form-label">Avukat Statüsü</label>
+        <input asp-for="LawyerStatus" class="form-control">
+    </div>
+    <button class="btn btn-success" type="submit">Ekle</button>
+</form>

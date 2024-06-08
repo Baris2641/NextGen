@@ -1,0 +1,32 @@
+@model IEnumerable<efCoreApp.Data.Lawyer> 
+
+<h2>Lawyer Lists</h2>
+<a href="/Lawyer/Create" class="btn btn-primary"> Lawyer Add</a>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 150px">@Html.DisplayNameFor(m => m.LawyerId)</th>
+            <th>@Html.DisplayNameFor(m => m.LawyerName)</th>
+            <th>@Html.DisplayNameFor(m => m.LawyerStatus)</th>
+            <th style="width: 150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lawyer in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => lawyer.LawyerId)</td>
+                <td>@Html.DisplayFor(modelItem => lawyer.LawyerName)</td>
+                <td>@Html.DisplayFor(modelItem => lawyer.LawyerStatus)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@lawyer.LawyerId" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@lawyer.LawyerId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+                
+            </tr>
+        }
+
+    </tbody>
+
+</table>

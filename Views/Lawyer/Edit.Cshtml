@@ -1,0 +1,16 @@
+@model Lawyer
+
+<h2>Update Lawyer</h2>
+<hr>
+<form asp-controller="Lawyer" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="LawyerId">
+    <div class="mb-3">
+        <label asp-for="LawyerName" class="form-label">Avukat adı</label>
+        <input asp-for="LawyerName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="LawyerStatus" class="form-label">Avukat Statüsü</label>
+        <input asp-for="LawyerStatus" class="form-control">
+    </div>
+    <button class="btn btn-success" type="submit">Kaydet</button>
+</form>
