@@ -1,0 +1,20 @@
+@model efCoreApp.Data.CaseFile
+
+<h2>Update CaseFile</h2>
+<hr>
+<form asp-controller="CaseFile" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id">
+    <div class="mb-3">
+        <label class="form-label">Avukat adı</label>
+        <input type="text" class="form-control" value="@Model.LawyerFullName">
+    </div>
+    <div class="mb-3">
+        <label asp-for="CaseFileName" class="form-label">Dosya İsmi</label>
+        <input asp-for="CaseFileName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="CaseStatusId" class="form-label">Dosya Statüsü</label>
+        <input asp-for="CaseStatusId" class="form-control">
+    </div>
+    <button class="btn btn-success" type="submit">Kaydet</button>
+</form>

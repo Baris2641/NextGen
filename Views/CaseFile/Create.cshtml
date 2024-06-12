@@ -1,0 +1,23 @@
+@model CaseFile
+
+<h2>Add CaseFile</h2>
+<hr>
+<form asp-controller="CaseFile" asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="LawyerId" class="form-label">Dosya Avukatı</label>
+        <select asp-for="LawyerId" class="form-control" asp-items="ViewBag.Lawyers">
+            <option value="">Seçiniz</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CaseFileName" class="form-label">Dosya İsmi</label>
+        <input asp-for="CaseFileName" class="form-control" />
+    </div>
+<div class="mb-3">
+        <label asp-for="CaseStatusId" class="form-label">Dosya Durumu</label>
+        <select asp-for="CaseStatusId" class="form-control" asp-items="ViewBag.CaseFiles">
+            <option value="">Seçiniz</option>
+        </select>
+    </div>
+    <button class="btn btn-success" type="submit">Ekle</button>
+</form>

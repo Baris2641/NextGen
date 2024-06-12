@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace efCoreApp.Controllers
 {
-    public class LawyerController: Controller
+    public class LawyerController : Controller
     {
         private readonly CaseFileContext _context;
         public LawyerController(CaseFileContext context)
@@ -12,11 +12,12 @@ namespace efCoreApp.Controllers
             _context = context;
         }
 
-        public IActionResult Create(){
+        public IActionResult Create()
+        {
             return View();
         }
 
-         public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             var lawyer = await _context.Lawyers.ToListAsync();
             return View(lawyer);
@@ -94,13 +95,15 @@ namespace efCoreApp.Controllers
                 return NotFound();
             }
 
-            return View(lawyer); 
+            return View(lawyer);
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteLawyer([FromForm] int? value){
-            var lawyer = await _context.Lawyers.FindAsync(value);
-            if (lawyer == null){
+        public async Task<IActionResult> Delete([FromForm] int id)
+        {
+            var lawyer = await _context.Lawyers.FindAsync(id);
+            if (lawyer == null)
+            {
                 return NotFound();
             }
             _context.Lawyers.Remove(lawyer);

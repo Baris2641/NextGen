@@ -1,0 +1,32 @@
+@model IEnumerable<efCoreApp.Data.CaseFile>
+
+<h2>CaseFile Lists</h2>
+<a href="/CaseFile/Create" class="btn btn-primary"> CaseFile Add</a>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 150px">@Html.DisplayNameFor(m => m.LawyerId)</th>
+            <th>@Html.DisplayNameFor(m => m.CaseFileName)</th>
+            <th>@Html.DisplayNameFor(m => m.LawyerFullName)</th>
+            <th style="width: 150px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var CaseFile in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => CaseFile.Id)</td>
+                <td>@Html.DisplayFor(modelItem => CaseFile.CaseFileName)</td>
+                <td>@Html.DisplayFor(modelItem => CaseFile.LawyerFullName)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@CaseFile.Id" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@CaseFile.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>
